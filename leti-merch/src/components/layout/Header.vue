@@ -1,11 +1,25 @@
 <template>
-  <header class="header">
+  <header
+    class="header"
+    :style="{ position: position, backgroundColor: color }"
+  >
     <div class="header-top">
       <div class="header-top-search">
-        <img src="/svg/header-top-logo.svg" alt="search" />
+        <img src="/svg/header-logo.svg" alt="search" />
+        <router-link to="/" class="header-logo">ETU.SHOP</router-link>
       </div>
-
-      <router-link to="/" class="header-logo">LETI Merch</router-link>
+      <div class="header-menu">
+        <router-link
+          class="header-menu__link"
+          v-for="(element, i) of menu"
+          :to="element.path"
+          :key="i"
+          >{{ element.name }}</router-link
+        >
+      </div>
+      <div class="header-search">
+        <input type="text" class="header-search__input" />
+      </div>
       <div class="header-top-right">
         <div class="header-top-right__cart">
           <router-link to="/cart" class="header-top-right__link">
@@ -22,21 +36,25 @@
         </div>
       </div>
     </div>
-    <div class="header-menu">
-      <router-link
-        class="header-menu__link"
-        v-for="(element, i) of menu"
-        :to="element.path"
-        :key="i"
-        >{{ element.name }}</router-link
-      >
-    </div>
   </header>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { useCartStore } from "@/store/cart.js";
+
+const props = defineProps({
+  position: {
+    type: String,
+    required: false,
+    default: "static",
+  },
+  color: {
+    type: String,
+    required: true,
+    default: "var(--white)",
+  },
+});
 
 const cartStore = useCartStore();
 const menu = [
@@ -57,15 +75,20 @@ const menu = [
 
 <style lang="scss" scoped>
 .header {
-  height: 132px; //задаем фикс высоту
-  background-color: var(--white);
+  height: 91px; //задаем фикс высоту
+  backdrop-filter: blur(5px);
+  z-index: 10;
+  padding: 20px 0;
+  font-size: 16px;
+  gap: 10px;
+  color: var(--white);
+  //width: 1600px;
   &-top {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    height: 70px;
+    grid-template-columns: repeat(4, 1fr);
     align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 0 28px;
+    margin: 0 152px;
+    color: var(--white);
     &-right {
       display: flex;
       align-items: center;
@@ -82,10 +105,9 @@ const menu = [
         margin-left: 2px;
         font-size: 11px;
         text-decoration: none;
-        color: var(--black);
       }
       &__link {
-        color: var(--black);
+        color: var(--white);
         text-decoration: none;
         &:hover {
           text-decoration: underline;
@@ -94,23 +116,36 @@ const menu = [
     }
   }
   &-logo {
-    color: var(--black);
+    color: var(--white);
     font-size: 24px;
     text-decoration: none;
     font-family: var(--halvar);
     text-align: center;
+    margin-left: 5px;
     &:hover {
       text-decoration: underline;
     }
   }
   &-menu {
-    height: 62px;
     display: flex;
     justify-content: center;
     align-items: center;
     &__link {
       margin: 0 22px;
-      color: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__link {
+      margin: 0 22px;
+      color: var(--white);
       text-decoration: none;
       &:hover {
         text-decoration: underline;

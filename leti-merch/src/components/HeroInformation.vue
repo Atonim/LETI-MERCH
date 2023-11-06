@@ -2,9 +2,8 @@
   <div class="hero-info">
     <div class="hero-info-text">
       <h2 class="hero-info__title">{{ title }}</h2>
-      <span class="hero-info__description">{{ description }}</span>
     </div>
-    <uiButton>Узнать подробнее</uiButton>
+    <uiButton>Подробнее</uiButton>
     <!--<a :href="link" class="hero-info-link">Узнать подробнее</a>-->
   </div>
 </template>
@@ -14,10 +13,6 @@
 import uiButton from "@/components/UI/Button.vue";
 const props = defineProps({
   title: {
-    type: String,
-    required: false,
-  },
-  description: {
     type: String,
     required: false,
   },
@@ -32,20 +27,29 @@ const props = defineProps({
 <style lang="scss" scoped>
 .hero {
   &-info {
-    background: #fff;
-    max-width: 630px;
-    padding: 50px 55px;
-    height: 200px;
+    background: transparent;
+    max-width: 575px;
+    //padding: 50px 55px;
+    height: 244px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    margin: 0 152px;
+    gap: 60px;
     &-link {
-      color: var(--black);
+      color: var(--white);
       text-decoration: none;
       &:hover {
         text-decoration: underline;
       }
+    }
+    &__title {
+      font-size: 72px;
+      color: var(--white);
+      font-family: var(--halvar);
+      line-height: 64.8px;
+      font-weight: 700;
     }
   }
 }

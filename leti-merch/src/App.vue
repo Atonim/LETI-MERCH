@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Header />
+    <Header color="rgba(42, 42, 42, 0.1)" position="absolute" />
     <router-view />
     <Footer />
   </div>

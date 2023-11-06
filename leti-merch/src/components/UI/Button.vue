@@ -1,23 +1,21 @@
-<template lang="">
+<template>
   <div>
     <button class="btn">
-      <slot/>
+      <slot />
     </button>
   </div>
 </template>
 
-<script setup>
-</script>
-
 <style lang="scss" scoped>
 .btn {
-  background: var(--black);
-  color: var(--white);
+  background: var(--white);
+  color: var(--black);
   padding: 0 32px;
   display: inline-flex; //если кнопка еще и ссылка
   align-items: center;
   justify-content: center;
   border: none;
+  border-radius: 8px;
   font-size: 24px;
   cursor: pointer;
   height: 62px;

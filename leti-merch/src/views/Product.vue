@@ -2,7 +2,6 @@
   <div>
     <Loader v-if="loading" />
     <ProductDetail v-else :product="currentProduct" />
-    <AboutBrand />
   </div>
 </template>
 
@@ -11,7 +10,6 @@ import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import ProductDetail from "@/components/ProductDetail.vue";
 import Loader from "@/components/UI/Loader.vue";
-import AboutBrand from "@/components/AboutBrand.vue";
 import api from "@/api.js";
 
 const route = useRoute();

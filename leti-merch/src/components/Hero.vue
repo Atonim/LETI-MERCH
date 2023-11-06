@@ -1,10 +1,6 @@
 <template>
   <div class="hero">
-    <HeroInformation
-      title="Самый красивый макет"
-      description="В натуре четко"
-      link="#"
-    />
+    <HeroInformation title="Первый эстетический" link="#" />
   </div>
 </template>
 
@@ -15,10 +11,10 @@ import HeroInformation from "@/components/HeroInformation.vue";
 <style lang="scss" scoped>
 .hero {
   background: url("/img/hero.png");
-  height: 400px;
+  height: 900px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 80px;
+  justify-content: flex-start;
+  padding: auto;
 }
 </style>

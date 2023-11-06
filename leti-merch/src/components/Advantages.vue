@@ -6,7 +6,6 @@
       class="about-brand-element"
       v-for="(element, i) of aboutBrands"
       :key="i">
-        <img :src="element.img" :alt="element.title" class="about-brand-element__img">
         <h4 class="about-brand-elemet__title">{{element.title}}</h4>
         <span class="about-brand-elemet__description">{{element.description}}</span>
       </div>
@@ -18,23 +17,15 @@
 import { ref } from "vue";
 const aboutBrands = ref([
   {
-    img: "/svg/header-top-search.svg",
-    title: "У нас лучшие работники",
+    title: "Качество",
     description: "И лучшие печеньки",
   },
   {
-    img: "/svg/header-top-search.svg",
-    title: "У нас лучшие работники",
+    title: "Доступность",
     description: "И лучшие печеньки",
   },
   {
-    img: "/svg/header-top-search.svg",
-    title: "У нас лучшие работники",
-    description: "И лучшие печеньки",
-  },
-  {
-    img: "/svg/header-top-search.svg",
-    title: "У нас лучшие работники",
+    title: "Студенто-ориентированность",
     description: "И лучшие печеньки",
   },
 ]);
@@ -43,6 +34,7 @@ const aboutBrands = ref([
 <style lang="scss" scoped>
 .about-brand {
   padding: 80px 0 130px 0;
+
   &__title {
     text-align: center;
     font-size: 24px;

@@ -1,10 +1,10 @@
 //@import url("https://fonts.cdnfonts.com/css/satoshi");
-@import './fonts.scss';
+@import '@/assets/styles/fonts.scss';
 
 :root {
-  //--halvar: "Halvar Breit Hl", sans-serif;
+  --halvar: "Halvar Breit Hl", sans-serif;
   //--helvetica: 'HelveticaNeueCyr', sans-serif;
-  --white: #ffffff;
+  --white: #fffcfc;
   --black: #2A2A2A;
   --gray: #726e8d;
   --lightGray: #5b5676;
@@ -15,10 +15,11 @@
 }
 
 body {
-  font-family: var(--helvetica);
+  font-family: var(--halvar);
   font-size: 18px;
   margin: 0;
   padding: 0;
+
 }
 
 img {
@@ -26,6 +27,6 @@ img {
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 1600px;
   margin: auto;
 }
