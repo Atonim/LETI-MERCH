@@ -1,14 +1,24 @@
 <template>
   <div class="hero">
-    <img class="hero-image" src="/img/hero.png" alt="hero-block" />
+    <HeroInformation
+      title="Самый красивый макет"
+      description="В натуре четко"
+      link="#"
+    />
   </div>
 </template>
-<script>
+
+<script setup>
+import HeroInformation from "@/components/HeroInformation.vue";
 </script>
-<style lang="scss">
+
+<style lang="scss" scoped>
 .hero {
-  &-img {
-    max-width: 100%;
-  }
+  background: url("/img/hero.png");
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 80px;
 }
 </style>

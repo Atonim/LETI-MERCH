@@ -1,0 +1,29 @@
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+@import './fonts.scss';
+
+:root {
+  --satoshi: "Satoshi", sans-serif;
+  --black: #2a254b;
+  --gray: #726e8d;
+  --lightGray: #5b5676;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--satoshi);
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+}

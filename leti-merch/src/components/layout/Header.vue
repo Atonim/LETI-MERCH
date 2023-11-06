@@ -5,27 +5,27 @@
         <img src="/svg/header-top-search.svg" alt="search" />
       </div>
 
-      <a href="#" class="header-logo">LETI Merch</a>
+      <router-link to="/" class="header-logo">LETI Merch</router-link>
       <div class="header-top-right">
         <div class="header-top-right__cart">
-          <a href="#">
+          <router-link to="/cart">
             <img src="/svg/header-top-search.svg" alt="search" />
-          </a>
+          </router-link>
         </div>
         <div class="header-top-right__profile">
-          <a href="#">
-            <img src="/svg/header-top-search.svg" alt="search" />
-          </a>
+          <router-link to="/user">
+            <img src="/svg/header-top-search.svg" alt="user" />
+          </router-link>
         </div>
       </div>
     </div>
     <div class="header-menu">
-      <a
+      <router-link
         class="header-menu__link"
         v-for="(element, i) of menu"
-        :href="element.path"
+        :to="element.path"
         :key="i"
-        >{{ element.name }}</a
+        >{{ element.name }}</router-link
       >
     </div>
   </header>
@@ -36,16 +36,16 @@ import { ref } from "vue";
 
 const menu = [
   {
-    name: "Plant pots",
-    path: "/plant",
+    name: "Каталог",
+    path: "/catalog",
   },
   {
-    name: "Ceramic",
-    path: "/ceramic",
+    name: "Лукбук",
+    path: "/lookbook",
   },
   {
-    name: "Tables",
-    path: "/tables",
+    name: "О бренде",
+    path: "/about",
   },
 ];
 </script>
@@ -84,7 +84,7 @@ const menu = [
     align-items: center;
     &__link {
       margin: 0 22px;
-      color: #726e8d;
+      color: var(--gray);
       text-decoration: none;
       &:hover {
         text-decoration: underline;
