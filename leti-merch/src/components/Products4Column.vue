@@ -7,6 +7,7 @@
         :img="product.img"
         :title="product.title"
         :price="product.price"
+        :id="product.id"
       />
     </div>
     <a href="#" class="products-link">Каталог</a>
@@ -14,35 +15,15 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import Product from "@/components/Product.vue";
 
-const products = ref([
-  {
-    id: 1,
-    img: "/img/product1.jpg",
-    title: "Футболка1 ЛЭТИ",
-    price: 250,
+import api from "@/api.js";
+
+const props = defineProps({
+  products: {
+    required: true,
   },
-  {
-    id: 2,
-    img: "/img/product1.jpg",
-    title: "Футболка2 ЛЭТИ",
-    price: 255,
-  },
-  {
-    id: 3,
-    img: "/img/product1.jpg",
-    title: "Футболка3 ЛЭТИ",
-    price: 150,
-  },
-  {
-    id: 4,
-    img: "/img/product1.jpg",
-    title: "Футболка4 ЛЭТИ",
-    price: 240,
-  },
-]);
+});
 </script>
 
 <style lang="scss" scoped>

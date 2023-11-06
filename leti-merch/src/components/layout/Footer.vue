@@ -6,8 +6,8 @@
           <div class="footer-menu-column">
             <span class="footer-menu__title">Разделы</span>
             <router-link to="/" class="footer-menu__link">Каталог</router-link>
-            <router-link to="/" class="footer-menu__link">Лукбук</router-link>
-            <router-link to="/" class="footer-menu__link">О бренде</router-link>
+            <router-link to="/" class="footer-menu__link">О нас</router-link>
+            <router-link to="/" class="footer-menu__link">Контакты</router-link>
           </div>
           <div class="footer-menu-column">
             <span class="footer-menu__title">Социльные сети</span>

@@ -2,19 +2,22 @@
   <header class="header">
     <div class="header-top">
       <div class="header-top-search">
-        <img src="/svg/header-top-search.svg" alt="search" />
+        <img src="/svg/header-top-logo.svg" alt="search" />
       </div>
 
       <router-link to="/" class="header-logo">LETI Merch</router-link>
       <div class="header-top-right">
         <div class="header-top-right__cart">
-          <router-link to="/cart">
-            <img src="/svg/header-top-search.svg" alt="search" />
+          <router-link to="/cart" class="header-top-right__link">
+            Корзина
           </router-link>
+          <span class="header-top-right__count" v-if="cartStore.cart.length"
+            >({{ cartStore.cart.length }})</span
+          >
         </div>
         <div class="header-top-right__profile">
-          <router-link to="/user">
-            <img src="/svg/header-top-search.svg" alt="user" />
+          <router-link to="/user" class="header-top-right__link">
+            Личный кабинет
           </router-link>
         </div>
       </div>
@@ -33,18 +36,20 @@
 
 <script setup>
 import { ref } from "vue";
+import { useCartStore } from "@/store/cart.js";
 
+const cartStore = useCartStore();
 const menu = [
   {
     name: "Каталог",
     path: "/catalog",
   },
   {
-    name: "Лукбук",
-    path: "/lookbook",
+    name: "О нас",
+    path: "/about",
   },
   {
-    name: "О бренде",
+    name: "Контакты",
     path: "/about",
   },
 ];
@@ -53,10 +58,10 @@ const menu = [
 <style lang="scss" scoped>
 .header {
   height: 132px; //задаем фикс высоту
-  background-color: white;
+  background-color: var(--white);
   &-top {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     height: 70px;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -64,15 +69,36 @@ const menu = [
     &-right {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
       &__cart {
         margin-right: 16px;
+        position: relative;
+      }
+      &__count {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        margin-left: 2px;
+        font-size: 11px;
+        text-decoration: none;
+        color: var(--black);
+      }
+      &__link {
+        color: var(--black);
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
   &-logo {
-    color: #22202e;
+    color: var(--black);
     font-size: 24px;
     text-decoration: none;
+    font-family: var(--halvar);
+    text-align: center;
     &:hover {
       text-decoration: underline;
     }
@@ -84,7 +110,7 @@ const menu = [
     align-items: center;
     &__link {
       margin: 0 22px;
-      color: var(--gray);
+      color: var(--black);
       text-decoration: none;
       &:hover {
         text-decoration: underline;

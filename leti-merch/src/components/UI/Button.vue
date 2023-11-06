@@ -12,15 +12,15 @@
 <style lang="scss" scoped>
 .btn {
   background: var(--black);
-  color: #fff;
+  color: var(--white);
   padding: 0 32px;
   display: inline-flex; //если кнопка еще и ссылка
   align-items: center;
   justify-content: center;
   border: none;
-  font-size: 16px;
+  font-size: 24px;
   cursor: pointer;
-  height: 56px;
+  height: 62px;
   &:hover {
     opacity: 0.8;
   }
