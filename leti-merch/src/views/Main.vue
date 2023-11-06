@@ -3,6 +3,7 @@
     <Hero />
     <Loader v-if="loading" />
     <Products v-else :products="popularProducts" />
+    <About />
   </div>
 </template>
 
@@ -11,6 +12,7 @@ import { onMounted, ref } from "vue";
 import Hero from "@/components/Hero.vue";
 import Products from "@/components/Products4Column.vue";
 import Loader from "@/components/UI/Loader.vue";
+import About from "@/components/About.vue";
 import api from "@/api.js";
 
 const popularProducts = ref([]);

@@ -3,7 +3,7 @@
     <div class="hero-info-text">
       <h2 class="hero-info__title">{{ title }}</h2>
     </div>
-    <uiButton>Подробнее</uiButton>
+    <uiButton href="link">Подробнее</uiButton>
     <!--<a :href="link" class="hero-info-link">Узнать подробнее</a>-->
   </div>
 </template>

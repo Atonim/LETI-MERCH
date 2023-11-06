@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="product">
     <Loader v-if="loading" />
     <ProductDetail v-else :product="currentProduct" />
   </div>
@@ -25,4 +25,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.product {
+  padding-top: 91px;
+}
 </style>

@@ -66,11 +66,12 @@ const changeQuantity = (type) => {
 
 <style lang="scss" scoped>
 .product {
-  background: var(--white);
+  background: var(--block);
   padding: 50px 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 65px;
+  color: var(--white);
   &-name {
     margin: 0 0 16px 0;
     font-family: var(--white);
@@ -96,14 +97,13 @@ const changeQuantity = (type) => {
     display: block;
   }
   &-quantity {
-    background: var(--white);
     width: 122px;
     height: 46px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
-    border: 1px solid var(--black);
+    border: 1px solid var(--white);
     &-symbol {
       color: var(--border-grey);
       cursor: pointer;

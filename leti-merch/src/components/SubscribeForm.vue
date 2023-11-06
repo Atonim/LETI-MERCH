@@ -16,6 +16,7 @@ import uiButton from "@/components/UI/Button.vue";
   display: flex;
   &__input {
     flex-grow: 1;
+    margin-right: 15px;
   }
 }
 </style>

@@ -15,7 +15,7 @@ export const useCartStore = defineStore("cartStore", () => {
 
   const addToCart = (product, quantity) => {
     const cartIndex = cart.value.findIndex(el => el.id === product.id)
-    if (cartIndex)
+    if (cartIndex === -1)
       cart.value.push({ ...product, quantity });
   }
   const toggleFavourite = (product) => {

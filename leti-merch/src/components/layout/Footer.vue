@@ -26,7 +26,8 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span class="footer-bottom__copyright">Copyright 2023 LETI Merch</span>
+        <span class="footer-bottom__copyright">Copyright 2023 ETU.SHOP</span>
+        <img src="/svg/header-logo-shop.svg" alt="search" class="header-logo" />
       </div>
     </div>
   </footer>
@@ -38,7 +39,7 @@ import SubscribeForm from "@/components/SubscribeForm.vue";
 
 <style lang="scss" scoped>
 .footer {
-  background-color: var(--black);
+  background-color: rgba(34, 34, 34, 1);
   color: #fff;
   &-content {
     padding: 58px 82px 25px 82px;

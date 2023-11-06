@@ -1,13 +1,9 @@
 <template>
-  <header
-    class="header"
-    :style="{ position: position, backgroundColor: color }"
-  >
+  <header class="header">
     <div class="header-top">
-      <div class="header-top-search">
-        <img src="/svg/header-logo.svg" alt="search" />
-        <router-link to="/" class="header-logo">ETU.SHOP</router-link>
-      </div>
+      <router-link to="/" class="header-top-logo">
+        <img src="/svg/header-logo-shop.svg" alt="search" class="header-logo" />
+      </router-link>
       <div class="header-menu">
         <router-link
           class="header-menu__link"
@@ -43,19 +39,6 @@
 import { ref } from "vue";
 import { useCartStore } from "@/store/cart.js";
 
-const props = defineProps({
-  position: {
-    type: String,
-    required: false,
-    default: "static",
-  },
-  color: {
-    type: String,
-    required: true,
-    default: "var(--white)",
-  },
-});
-
 const cartStore = useCartStore();
 const menu = [
   {
@@ -76,7 +59,9 @@ const menu = [
 <style lang="scss" scoped>
 .header {
   height: 91px; //задаем фикс высоту
+  background-color: rgba(42, 42, 42, 0.1);
   backdrop-filter: blur(5px);
+  position: absolute;
   z-index: 10;
   padding: 20px 0;
   font-size: 16px;
@@ -89,6 +74,9 @@ const menu = [
     align-items: center;
     margin: 0 152px;
     color: var(--white);
+    &-logo {
+      width: 135px;
+    }
     &-right {
       display: flex;
       align-items: center;
@@ -116,15 +104,8 @@ const menu = [
     }
   }
   &-logo {
-    color: var(--white);
-    font-size: 24px;
-    text-decoration: none;
-    font-family: var(--halvar);
-    text-align: center;
-    margin-left: 5px;
-    &:hover {
-      text-decoration: underline;
-    }
+    margin-top: 5px;
+    cursor: pointer;
   }
   &-menu {
     display: flex;

@@ -19,7 +19,7 @@ body {
   font-size: 18px;
   margin: 0;
   padding: 0;
-
+  background-color: var(--black);
 }
 
 img {
@@ -29,4 +29,5 @@ img {
 .container {
   max-width: 1600px;
   margin: auto;
+
 }

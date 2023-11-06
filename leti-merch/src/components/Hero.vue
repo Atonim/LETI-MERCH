@@ -1,6 +1,6 @@
 <template>
   <div class="hero">
-    <HeroInformation title="Первый эстетический" link="#" />
+    <HeroInformation title="Первый эстетический" link="/about" />
   </div>
 </template>
 
