@@ -6,11 +6,13 @@
         element.name
       }}</Chip>
     </div>
+    <CatalogList />
   </div>
 </template>
 
 <script setup>
 import Chip from "@/components/UI/Chip.vue";
+import CatalogList from "@/components/CatalogList.vue";
 const menu = [
   {
     name: "Свитшоты",
@@ -35,10 +37,12 @@ const menu = [
 
 <style lang="scss" scoped>
 .catalog {
+  flex: 1 0 auto;
   padding-top: 91px;
   &-title {
     font-size: 72px;
-    color: var(--black);
+    color: var(--white);
+    text-align: center;
   }
   &-menu {
     height: 62px;

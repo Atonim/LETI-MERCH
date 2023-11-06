@@ -1,10 +1,15 @@
 <template>
-  <div clas="cart"></div>
+  <div clas="cart">
+    <CartList />
+  </div>
 </template>
-<script>
-export default {};
+
+<script setup>
+import CartList from "@/components/CartList.vue";
 </script>
+
 <style lang="scss" scoped>
 .cart {
+  flex: 1 0 auto;
 }
 </style>

@@ -14,12 +14,14 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   font-family: var(--halvar);
   font-size: 18px;
   margin: 0;
   padding: 0;
   background-color: var(--black);
+  min-height: 100vh;
 }
 
 img {
@@ -29,5 +31,8 @@ img {
 .container {
   max-width: 1600px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
 }

@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-top">
@@ -11,14 +11,22 @@
           </div>
           <div class="footer-menu-column">
             <span class="footer-menu__title">Социльные сети</span>
-            <router-link to="/" class="footer-menu__link">Вконтакте</router-link>
+            <router-link to="/" class="footer-menu__link"
+              >Вконтакте</router-link
+            >
             <router-link to="/" class="footer-menu__link">Телеграм</router-link>
-            <router-link to="/" class="footer-menu__link">Инстаграм</router-link>
+            <router-link to="/" class="footer-menu__link"
+              >Инстаграм</router-link
+            >
           </div>
           <div class="footer-menu-column">
             <span class="footer-menu__title">Информация</span>
-            <router-link to="/" class="footer-menu__link">Политика конфиденциальности</router-link>
-            <router-link to="/" class="footer-menu__link">Публичная оферта</router-link>
+            <router-link to="/" class="footer-menu__link"
+              >Политика конфиденциальности</router-link
+            >
+            <router-link to="/" class="footer-menu__link"
+              >Публичная оферта</router-link
+            >
           </div>
         </div>
         <div class="footer-subscribe">
@@ -39,6 +47,7 @@ import SubscribeForm from "@/components/SubscribeForm.vue";
 
 <style lang="scss" scoped>
 .footer {
+  flex: 0 0 auto;
   background-color: rgba(34, 34, 34, 1);
   color: #fff;
   &-content {

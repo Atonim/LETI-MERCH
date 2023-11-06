@@ -1,27 +1,18 @@
 <template>
   <div class="products-container">
-    <h3 class="products-title">Популярные товары</h3>
     <div class="products">
       <Product
-        v-for="product of products"
+        v-for="product in api.getCatalog()"
         :product="product"
         :key="product.id"
       />
     </div>
-    <a href="#" class="products-link">Каталог</a>
   </div>
 </template>
 
 <script setup>
-import Product from "@/components/Product.vue";
-
 import api from "@/api.js";
-
-const props = defineProps({
-  products: {
-    required: true,
-  },
-});
+import Product from "@/components/Product.vue";
 </script>
 
 <style lang="scss" scoped>

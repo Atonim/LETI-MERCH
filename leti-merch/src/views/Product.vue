@@ -26,6 +26,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .product {
+  flex: 1 0 auto;
   padding-top: 91px;
 }
 </style>

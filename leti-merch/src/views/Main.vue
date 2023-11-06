@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <Hero />
     <Loader v-if="loading" />
     <Products v-else :products="popularProducts" />
@@ -27,4 +27,7 @@ onMounted(() => {
 
 
 <style lang="scss">
+.main {
+  flex: 1 0 auto;
+}
 </style>

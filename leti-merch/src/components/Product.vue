@@ -1,14 +1,15 @@
 <template>
   <div class="product">
-    <router-link :to="`product/${id}`">
-      <img :src="img" :alt="title" class="product-img" />
+    <router-link :to="`product/${product.id}`">
+      <img :src="product.img" :alt="product.title" class="product-img" />
     </router-link>
     <div class="product-description">
-      <router-link :to="`product/${id}`" class="product-name">{{
+      <router-link :to="`product/${product.id}`" class="product-name">{{
         title
       }}</router-link>
       <div class="product-description-bottom">
         <uiButton
+          @click="cartStore.addToCart(product, 1)"
           backgroundColor="var(--black)"
           textColor="var(--white)"
           border="1px solid var(--white)"
@@ -17,7 +18,7 @@
           height="39px"
           >Добавить в корзину</uiButton
         >
-        <span class="product-price">{{ price }} ₽</span>
+        <span class="product-price">{{ product.price }} ₽</span>
       </div>
     </div>
   </div>
@@ -25,24 +26,17 @@
 
 <script setup>
 import uiButton from "@/components/UI/Button.vue";
+import { useCartStore } from "@/store/cart.js";
+
 const props = defineProps({
-  id: {
-    type: Number,
-    required: true,
-  },
-  img: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
+  product: {
+    type: Object,
+    default: () => {},
     required: true,
   },
 });
+
+const cartStore = useCartStore();
 </script>
 
 <style lang="scss" scoped>

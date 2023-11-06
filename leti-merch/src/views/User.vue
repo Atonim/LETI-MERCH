@@ -5,4 +5,7 @@
 export default {};
 </script>
 <style lang="scss" scoped>
+.user {
+  flex: 1 0 auto;
+}
 </style>
