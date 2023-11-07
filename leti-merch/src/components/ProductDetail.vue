@@ -7,13 +7,18 @@
         class="product-image__img"
       />
     </div>
-    <div>
+    <div class="product-description">
       <h2 class="product-name">{{ product.name }}</h2>
-      <span class="product-price">{{ product.types }} ₽</span>
-      <div class="product-block product-description">
-        <div v-html="product.description"></div>
+      <span class="product-price">{{ price }} ₽</span>
+      <div class="product-block">
+        <div>{{ product.description }}</div>
       </div>
       <div class="product-block">
+        <div
+          class="product-sizes"
+          v-for="el in product.types"
+          :key="el.id"
+        ></div>
         <!--<span class="product-block__title">Характеристики</span>
         <span
           class="product-param"
@@ -34,7 +39,7 @@
           >
         </div>
       </div>
-      <uiButton @click="cartStore.addToCart(product, quantity)"
+      <uiButton @click="cartStore.addToCart(productForCart, quantity)"
         >Добавить в корзину</uiButton
       >
     </div>
@@ -56,6 +61,14 @@ const props = defineProps({
 
 const quantity = ref(1);
 const cartStore = useCartStore();
+const minPrice = props.product.types.reduce((x, y) =>
+  Math.min(x.price, y.price)
+);
+const productForCart = ref({
+  name: props.product.name,
+  price: minPrice,
+  avatar: props.product.images[0],
+});
 
 const changeQuantity = (type) => {
   if (type === "minus") {
@@ -94,7 +107,6 @@ const changeQuantity = (type) => {
   }
   &-description {
     border-top: 1px solid var(--black);
-    padding-top: 24px;
   }
   &-param {
     display: block;

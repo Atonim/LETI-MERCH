@@ -6,24 +6,34 @@
         v-for="(element, i) of menu"
         :key="i"
         :category="element.name"
+        v-model="activeChip"
         >{{ element.name }}</Chip
       >
     </div>
   </div>
 </template>
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import Loader from "@/components/UI/Loader.vue";
 import Chip from "@/components/UI/Chip.vue";
 import api from "@/api.js";
 
 const loading = ref(true);
 const menu = ref([]);
+const activeChip = ref();
 
 onMounted(async () => {
   menu.value = await api.getCategories();
   loading.value = false;
 });
+
+watch(
+  activeChip,
+  (state) => {
+    console.log(JSON.stringify(state));
+  },
+  { deep: true }
+);
 </script>
 <style lang="scss" scoped>
 .chips {
