@@ -1,14 +1,13 @@
 <template>
   <div class="products-container">
-    <h3 class="products-title">Популярные товары</h3>
+    <h2 class="products-title">Популярные товары</h2>
     <div class="products">
       <Product
-        v-for="product of products"
+        v-for="product of products.result.slice(0, 4)"
         :product="product"
         :key="product.id"
       />
     </div>
-    <a href="#" class="products-link">Каталог</a>
   </div>
 </template>
 
@@ -40,16 +39,8 @@ const props = defineProps({
     color: var(--white);
     font-family: var(--halvar);
     font-size: 48px;
-    text-align: center;
-  }
-  &-link {
-    display: block;
-    text-align: center;
-    color: var(--white);
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
+    font-stretch: expanded;
+    line-height: 52.8px;
   }
 }
 </style>

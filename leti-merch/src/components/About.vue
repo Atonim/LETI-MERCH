@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="about-description">
-      <h3 class="about-description__title">О нас</h3>
+      <h2 class="about-description__title">О нас</h2>
       <p class="about-description__text">
         ETU.SHOP - это не просто магазин, в котором продается мерч первого
         электротехнического. Мы позволяем вам проникнуться особой атмосферой

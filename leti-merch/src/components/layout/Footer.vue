@@ -51,7 +51,7 @@ import SubscribeForm from "@/components/SubscribeForm.vue";
   background-color: rgba(34, 34, 34, 1);
   color: #fff;
   &-content {
-    padding: 58px 82px 25px 82px;
+    padding: 58px 152px 25px 152px;
   }
   &-top {
     display: grid;

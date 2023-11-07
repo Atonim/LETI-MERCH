@@ -7,7 +7,7 @@
 <script setup>
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 import { ref } from "vue";
-const color = ref("black");
+const color = ref("white");
 const size = ref("15px");
 </script>
 
@@ -15,6 +15,6 @@ const size = ref("15px");
 .container {
   display: grid;
   justify-content: center;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 </style>

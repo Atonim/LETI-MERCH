@@ -10,7 +10,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import Hero from "@/components/Hero.vue";
-import Products from "@/components/Products4Column.vue";
+import Products from "@/components/PopularProducts.vue";
 import Loader from "@/components/UI/Loader.vue";
 import About from "@/components/About.vue";
 import api from "@/api.js";

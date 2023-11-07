@@ -1,54 +1,26 @@
 <template>
   <div class="catalog">
     <h2 class="catalog-title">Каталог товаров</h2>
-    <div class="catalog-menu">
-      <Chip class="catalog-menu__chip" v-for="(element, i) of menu" :key="i">{{
-        element.name
-      }}</Chip>
-    </div>
+    <ChipsContainer />
     <CatalogList />
   </div>
 </template>
 
 <script setup>
-import Chip from "@/components/UI/Chip.vue";
+import ChipsContainer from "@/components/ChipsContainer.vue";
 import CatalogList from "@/components/CatalogList.vue";
-const menu = [
-  {
-    name: "Свитшоты",
-  },
-  {
-    name: "Худи",
-  },
-  {
-    name: "Футболки",
-  },
-  {
-    name: "Канцелярия",
-  },
-  {
-    name: "Кружки",
-  },
-  {
-    name: "Аксессуары",
-  },
-];
+
+//const activeCategory = ref(3);
 </script>
 
 <style lang="scss" scoped>
 .catalog {
   flex: 1 0 auto;
-  padding-top: 91px;
+  padding: 91px 152px 0 152px;
   &-title {
     font-size: 72px;
     color: var(--white);
-    text-align: center;
-  }
-  &-menu {
-    height: 62px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 15px;
   }
 }
 </style>

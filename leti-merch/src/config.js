@@ -1,3 +1,3 @@
 export default {
-  MOCK: 'https://shop.etu.ru/api'
+  MOCK: 'https://shop.wani4ka.ru/api'
 }

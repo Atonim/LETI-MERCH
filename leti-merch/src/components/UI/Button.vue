@@ -47,13 +47,16 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .btn {
-  padding: 0 32px;
+  padding: 0 16px;
   display: inline-flex; //если кнопка еще и ссылка
   align-items: center;
   justify-content: center;
   cursor: pointer;
   &:hover {
     opacity: 0.8;
+    background-color: var(--white) !important;
+    color: var(--black) !important;
+    border-color: (--black) !important;
   }
 }
 </style>
