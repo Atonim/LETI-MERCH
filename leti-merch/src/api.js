@@ -1,3 +1,11 @@
+import axios from 'axios'
+import config from '@/config.js'
+
+export const HTTP = axios.create({
+  baseURL: config.MOCK
+})
+
+
 const products = [
   {
     id: 1,
@@ -76,3 +84,15 @@ export default {
     return products
   }
 }
+
+//export default {
+//  async getProducts() {
+//    try {
+//      const response = await HTTP.get('/categories');
+//      console.log(response.data);
+//      return response.data
+//    } catch (e) {
+//      console.log(e)
+//    }
+//  }
+//}

@@ -13,6 +13,26 @@ export const useCartStore = defineStore("cartStore", () => {
 
   const favouriteProducts = computed(() => cart.value.filter(el => el.isFavourite === true));
 
+
+
+  //  const updateSettings = (partialSettings) => {
+  //    const settings = {
+  //      ...this.settings,
+  //      ...partialSettings,
+  //    }
+
+  //    localStorage.setItem('cart', JSON.stringify(settings));
+  //  },
+  //},
+
+  //  const getSettings = () => {
+  //  const settings = localStorage.getItem('cart')
+
+  //  return settings ? JSON.parse(settings) : getDefaultSettings()
+  //},
+
+
+
   const addToCart = (product, quantity) => {
     const cartIndex = cart.value.findIndex(el => el.id === product.id)
     if (cartIndex === -1)
@@ -24,11 +44,12 @@ export const useCartStore = defineStore("cartStore", () => {
 
 
   watch(
-    () => cart,
+    cart,
     (state) => {
       localStorage.setItem('cart', JSON.stringify(state))
       console.log(JSON.stringify(state))
-    }), { deep: true }
+    },
+    { deep: true })
 
   return {
     cart, favouriteProducts, cartInLocalStorage,

@@ -15,8 +15,6 @@
 <script setup>
 import Product from "@/components/Product.vue";
 
-import api from "@/api.js";
-
 const props = defineProps({
   products: {
     required: true,

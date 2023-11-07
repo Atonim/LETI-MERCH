@@ -18,8 +18,8 @@ import api from "@/api.js";
 const popularProducts = ref([]);
 const loading = ref(true);
 
-onMounted(() => {
-  popularProducts.value = api.getPopularProducts();
+onMounted(async () => {
+  popularProducts.value = await api.getProducts();
   loading.value = false;
 });
 </script>
