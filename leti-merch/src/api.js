@@ -10,7 +10,7 @@ export default {
     try {
       const response = await HTTP.get('/categories/0');
       console.log(response.data);
-      return response.data
+      return response.data.result
     } catch (e) {
       console.log(e)
     }
@@ -19,7 +19,7 @@ export default {
     try {
       const response = await HTTP.get('/categories');
       console.log(response.data);
-      return response.data
+      return response.data.result
     } catch (e) {
       console.log(e)
     }
@@ -28,9 +28,18 @@ export default {
     try {
       const response = await HTTP.get(`/categories/${category}`);
       console.log(response.data);
-      return response.data
+      return response.data.result
     } catch (e) {
       console.log(e)
     }
-  }
+  },
+  async getProductById(id) {
+    try {
+      const response = await HTTP.get(`/items/${id}`);
+      console.log(response.data.result);
+      return response.data.result
+    } catch (e) {
+      console.log(e)
+    }
+  },
 }

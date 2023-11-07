@@ -4,13 +4,19 @@
     <div class="list-container" v-if="cartStore.cart.length">
       <div class="list-item" v-for="el in cartStore.cart" :key="el.id">
         <div class="list-item-container">
-          <img :src="el.img" :alt="el.title" class="list-item__img" />
+          <img :src="el.avatar" :alt="el.name" class="list-item__img" />
         </div>
-        <div class="list-item-name">{{ el.title }}</div>
-        <div class="list-item-quantity">{{ el.quanity }}</div>
-        <span>X</span>
-        <div class="list-item-price">{{ el.price }} ₽</div>
-        <div class="list-item-total"></div>
+        <div class="list-item-name">{{ el.name }}</div>
+        <div class="list-item-quantity">
+          {{ el.quantity }} X {{ el.price }} ₽
+        </div>
+        <div class="list-item-total">
+          {{ totalPrice(el.price, el.quantity) }} ₽
+        </div>
+        <uiButton @click="cartStore.removeFromCart(el)">Удалить</uiButton>
+      </div>
+      <div class="list-purchase">
+        <uiButton @click="cartStore.purchase()">Подвердить</uiButton>
       </div>
     </div>
     <h3 v-else class="list-empty">Пока что пусто</h3>
@@ -18,7 +24,10 @@
 </template>
 <script setup>
 import { useCartStore } from "@/store/cart.js";
+import { computed } from "vue";
+import uiButton from "@/components/UI/Button.vue";
 
+const totalPrice = (price, quantity) => price * quantity;
 const cartStore = useCartStore();
 </script>
 
@@ -30,20 +39,26 @@ const cartStore = useCartStore();
     text-align: center;
     margin: 50px;
   }
+  &-purchase {
+    display: flex;
+    justify-content: flex-end;
+    margin: 50px 0;
+  }
   &-title {
     color: var(--white);
     font-family: var(--halvar);
     font-size: 48px;
-    text-align: center;
   }
   &-item {
     display: grid;
-    grid-template-columns: 1fr 1fr 100px 30px 100px 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-content: space-between;
     align-items: center;
     gap: 15px;
+    border: 1px solid var(--white);
+    margin-bottom: 15px;
     &__img {
-      max-width: 300px;
+      max-width: 200px;
     }
   }
 }

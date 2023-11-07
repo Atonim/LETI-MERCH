@@ -17,9 +17,9 @@ const productId = ref("");
 const currentProduct = ref({});
 const loading = ref(true);
 
-onMounted(() => {
+onMounted(async () => {
   productId.value = route.params.id;
-  currentProduct.value = api.getProduct(productId.value);
+  currentProduct.value = await api.getProductById(productId.value);
   loading.value = false;
 });
 </script>

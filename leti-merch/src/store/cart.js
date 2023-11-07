@@ -38,6 +38,14 @@ export const useCartStore = defineStore("cartStore", () => {
     if (cartIndex === -1)
       cart.value.push({ ...product, quantity });
   }
+  const removeFromCart = (product) => {
+    cart.value = cart.value.filter(el => el.id !== product.id)
+  }
+
+  const purchase = (product) => {
+    cart.value = [];
+  }
+
   const toggleFavourite = (product) => {
     product.isFavourite ? product.isFavourite = false : product.isFavourite = true;
   }
@@ -53,6 +61,6 @@ export const useCartStore = defineStore("cartStore", () => {
 
   return {
     cart, favouriteProducts, cartInLocalStorage,
-    addToCart, toggleFavourite
+    addToCart, toggleFavourite, removeFromCart, purchase
   }
 })

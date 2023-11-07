@@ -3,7 +3,10 @@
     <div class="hero-info-text">
       <h1 class="hero-info__title">{{ title }}</h1>
     </div>
-    <uiButton href="link">Подробнее</uiButton>
+    <router-link to="/about" class="hero-info-link">
+      <uiButton>Подробнее</uiButton>
+    </router-link>
+
     <!--<a :href="link" class="hero-info-link">Узнать подробнее</a>-->
   </div>
 </template>

@@ -1,23 +1,26 @@
 <template>
   <div class="product">
     <div class="product-image">
-      <img :src="product.img" :alt="product.title" class="product-image__img" />
+      <img
+        :src="product.images[0]"
+        :alt="product.name"
+        class="product-image__img"
+      />
     </div>
     <div>
-      <h2 class="product-name">{{ product.title }}</h2>
-      <span class="product-price">{{ product.price }} ₽</span>
+      <h2 class="product-name">{{ product.name }}</h2>
+      <span class="product-price">{{ product.types }} ₽</span>
       <div class="product-block product-description">
-        <span class="product-block__title"> Описание </span>
         <div v-html="product.description"></div>
       </div>
       <div class="product-block">
-        <span class="product-block__title">Характеристики</span>
+        <!--<span class="product-block__title">Характеристики</span>
         <span
           class="product-param"
           v-for="(param, i) of product.params"
           :key="i"
           >{{ param.name }}: {{ param.value }}</span
-        >
+        >-->
       </div>
       <div class="product-block">
         <span class="product-block__title">Количество</span>
@@ -31,7 +34,7 @@
           >
         </div>
       </div>
-      <uiButton @click="cartStore.addToCart(product, quanity)"
+      <uiButton @click="cartStore.addToCart(product, quantity)"
         >Добавить в корзину</uiButton
       >
     </div>
@@ -42,17 +45,17 @@
 import { ref } from "vue";
 import uiButton from "@/components/UI/Button.vue";
 import { useCartStore } from "@/store/cart.js";
-
-const quantity = ref(1);
-const cartStore = useCartStore();
+import api from "@/api.js";
 
 const props = defineProps({
   product: {
     type: Object,
-    default: () => {},
     required: true,
   },
 });
+
+const quantity = ref(1);
+const cartStore = useCartStore();
 
 const changeQuantity = (type) => {
   if (type === "minus") {
@@ -67,7 +70,7 @@ const changeQuantity = (type) => {
 <style lang="scss" scoped>
 .product {
   background: var(--block);
-  padding: 50px 0;
+  padding: 50px 152px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 65px;

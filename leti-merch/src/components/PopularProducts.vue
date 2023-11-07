@@ -3,7 +3,7 @@
     <h2 class="products-title">Популярные товары</h2>
     <div class="products">
       <Product
-        v-for="product of products.result.slice(0, 4)"
+        v-for="product of products.slice(0, 4)"
         :product="product"
         :key="product.id"
       />

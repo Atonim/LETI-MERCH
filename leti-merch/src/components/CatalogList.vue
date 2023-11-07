@@ -1,15 +1,15 @@
 <template>
   <div class="products-container">
-    <div v-if="products.result" class="products">
+    <div class="products">
       <Loader v-if="loading" />
       <Product
         v-else
-        v-for="product in products.result"
+        v-for="product in products"
         :product="product"
         :key="product.id"
       />
     </div>
-    <div v-else class="products-empty">Ждите пополнение товаров</div>
+    <!--<div v-else class="products-empty">Ждите пополнение товаров</div>-->
   </div>
 </template>
 
@@ -22,7 +22,7 @@ import Loader from "@/components/UI/Loader.vue";
 const props = defineProps({
   category: {
     type: String,
-    default: "3",
+    default: "1",
   },
 });
 

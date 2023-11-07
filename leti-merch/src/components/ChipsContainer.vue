@@ -3,7 +3,7 @@
     <div class="chips-menu">
       <Chip
         class="catalog-menu__chip"
-        v-for="(element, i) of menu.result"
+        v-for="(element, i) of menu"
         :key="i"
         :category="element.name"
         >{{ element.name }}</Chip
