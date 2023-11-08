@@ -3,10 +3,11 @@
     <h2 class="list-title">Корзина</h2>
     <div class="list-container" v-if="cartStore.cart.length">
       <div class="list-item" v-for="el in cartStore.cart" :key="el.id">
-        <div class="list-item-container">
+        <router-link class="list-item-container" :to="`product/${el.id}`">
           <img :src="el.avatar" :alt="el.name" class="list-item__img" />
-        </div>
+        </router-link>
         <div class="list-item-name">{{ el.name }}</div>
+        <div class="list-item-size">Размер: {{ el.type.toUpperCase() }}</div>
         <div class="list-item-quantity">
           {{ el.quantity }} X {{ el.price }} ₽
         </div>
@@ -51,7 +52,7 @@ const cartStore = useCartStore();
   }
   &-item {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     justify-content: space-between;
     align-items: center;
     gap: 15px;

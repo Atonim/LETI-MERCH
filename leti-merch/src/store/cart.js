@@ -33,12 +33,16 @@ export const useCartStore = defineStore("cartStore", () => {
 
 
   const addToCart = (product, quantity) => {
-    const cartIndex = cart.value.findIndex(el => el.id === product.id)
-    if (cartIndex === -1)
+    console.log(product)
+    const cartProduct = cart.value.find(el => el.id === product.id && el.type === product.type)
+    if (!cartProduct)
       cart.value.push({ ...product, quantity });
+    else
+      cartProduct.quantity += quantity;
   }
   const removeFromCart = (product) => {
-    cart.value = cart.value.filter(el => el.id !== product.id)
+    console.log(product);
+    cart.value = cart.value.filter(el => el.id !== product.id || (el.id === product.id && el.type !== product.type))
   }
 
   const purchase = (product) => {

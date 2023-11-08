@@ -1,10 +1,10 @@
 <template>
   <div class="product">
-    <router-link :to="`product/${product.id}`">
+    <router-link :to="`/product/${product.id}`">
       <img :src="product.avatar" :alt="product.name" class="product-img" />
     </router-link>
     <div class="product-description">
-      <router-link :to="`product/${product.id}`" class="product-name">{{
+      <router-link :to="`/product/${product.id}`" class="product-name">{{
         product.name
       }}</router-link>
       <div class="product-description-bottom">
@@ -37,6 +37,7 @@ const props = defineProps({
     required: true,
   },
 });
+console.log(props.product);
 const cartStore = useCartStore();
 </script>
 
