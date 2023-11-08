@@ -55,7 +55,7 @@ watch(
     }
     console.log(JSON.stringify(state));
     products.value = products.value.filter((el) =>
-      el.name.includes(searchQuery.value)
+      el.name.toLowerCase().includes(searchQuery.value.toLowerCase())
     );
   },
   { deep: true }

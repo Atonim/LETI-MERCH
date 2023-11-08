@@ -11,7 +11,6 @@ import { ref } from "vue";
 import ChipsContainer from "@/components/ChipsContainer.vue";
 import CatalogList from "@/components/CatalogList.vue";
 
-const products = ref([]);
 const categoryId = ref(0);
 const changeCatalog = (id) => (categoryId.value = id);
 </script>
