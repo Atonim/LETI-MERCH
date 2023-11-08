@@ -39,7 +39,7 @@ onMounted(async () => {
   selectedProducts.value = await api.getProductsByCategory(props.category);
   products.value = selectedProducts.value;
   if (searchQuery.value) {
-    products.value = products.value.filter((el) =>
+    products.value = selectedProducts.value.filter((el) =>
       el.name.includes(searchQuery.value)
     );
   }
@@ -54,7 +54,7 @@ watch(
       products.value = selectedProducts.value;
     }
     console.log(JSON.stringify(state));
-    products.value = products.value.filter((el) =>
+    products.value = selectedProducts.value.filter((el) =>
       el.name.toLowerCase().includes(searchQuery.value.toLowerCase())
     );
   },
