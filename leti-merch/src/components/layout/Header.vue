@@ -70,7 +70,7 @@ const menu = [
   },
   {
     name: "Контакты",
-    path: "/about",
+    path: "/contacts",
   },
 ];
 const search = () => {

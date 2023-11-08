@@ -5,9 +5,15 @@
         <div class="footer-menu">
           <div class="footer-menu-column">
             <span class="footer-menu__title">Разделы</span>
-            <router-link to="/" class="footer-menu__link">Каталог</router-link>
-            <router-link to="/" class="footer-menu__link">О нас</router-link>
-            <router-link to="/" class="footer-menu__link">Контакты</router-link>
+            <router-link to="/catalog" class="footer-menu__link"
+              >Каталог</router-link
+            >
+            <router-link to="/about" class="footer-menu__link"
+              >О нас</router-link
+            >
+            <router-link to="/contacts" class="footer-menu__link"
+              >Контакты</router-link
+            >
           </div>
           <div class="footer-menu-column">
             <span class="footer-menu__title">Социльные сети</span>
@@ -35,7 +41,13 @@
       </div>
       <div class="footer-bottom">
         <span class="footer-bottom__copyright">Copyright 2023 ETU.SHOP</span>
-        <img src="/svg/header-logo-shop.svg" alt="search" class="header-logo" />
+        <router-link to="/" class="footer-bottom-logo">
+          <img
+            src="/svg/header-logo-shop.svg"
+            alt="search"
+            class="header-logo"
+          />
+        </router-link>
       </div>
     </div>
   </footer>
@@ -48,8 +60,8 @@ import SubscribeForm from "@/components/SubscribeForm.vue";
 <style lang="scss" scoped>
 .footer {
   flex: 0 0 auto;
-  background-color: rgba(34, 34, 34, 1);
-  color: #fff;
+  background-color: var(--dark);
+  color: var(--white);
   &-content {
     padding: 58px 152px 25px 152px;
   }
@@ -57,7 +69,7 @@ import SubscribeForm from "@/components/SubscribeForm.vue";
     display: grid;
     grid-template-columns: 540px 1fr;
     column-gap: 110px;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid var(--white);
     @media screen and (max-width: 1150px) {
       column-gap: 10px;
       grid-template-columns: 450px 1fr;
@@ -67,13 +79,13 @@ import SubscribeForm from "@/components/SubscribeForm.vue";
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     &__title {
-      color: #fff;
+      color: var(--white);
       margin-bottom: 12px;
       display: block;
     }
     &__link {
       display: block;
-      color: #fff;
+      color: var(--white);
       font-size: 14px;
       text-decoration: none;
       margin-bottom: 12px;

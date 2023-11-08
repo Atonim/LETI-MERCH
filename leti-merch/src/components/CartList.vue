@@ -1,6 +1,12 @@
 <template >
   <div class="list">
-    <h2 class="list-title">Корзина</h2>
+    <div class="list-title-container">
+      <h2 class="list-title">Корзина</h2>
+      <span class="list-title__count" v-if="cartStore.cart.length"
+        >({{ cartStore.cart.length }})</span
+      >
+    </div>
+
     <div class="list-container" v-if="cartStore.cart.length">
       <div class="list-item" v-for="el in cartStore.cart" :key="el.id">
         <router-link class="list-item-container" :to="`product/${el.id}`">
@@ -48,6 +54,20 @@ const cartStore = useCartStore();
     color: var(--white);
     font-family: var(--halvar);
     font-size: 48px;
+    margin: 0;
+    display: inline-block;
+    &-container {
+      position: relative;
+      margin: 50px 0 15px 0;
+    }
+    &__count {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      margin-left: 2px;
+      font-size: 24px;
+      text-decoration: none;
+    }
   }
   &-item {
     display: grid;

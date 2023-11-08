@@ -22,7 +22,7 @@ const changeCatalog = (id) => (categoryId.value = id);
   &-title {
     font-size: 72px;
     color: var(--white);
-    margin-bottom: 15px;
+    margin: 50px 0 15px 0;
   }
 }
 </style>

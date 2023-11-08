@@ -38,5 +38,9 @@ export default {};
       font-family: var(--halvar);
     }
   }
+  &-image {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 </style>
