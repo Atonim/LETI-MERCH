@@ -22,7 +22,7 @@ const props = defineProps({
     min-width: 45px;
     height: 25px;
     margin: 8px;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 25px;
     position: relative;
     background: var(--black);

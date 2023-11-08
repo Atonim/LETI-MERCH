@@ -15,9 +15,14 @@
       </div>
       <div class="header-search">
         <div class="header-search-container">
-          <input type="text" class="header-search__input" placeholder="Найти" />
+          <input
+            type="text"
+            class="header-search__input"
+            placeholder="Найти"
+            v-model="searchQuery"
+          />
           <span class="header-search__aicon">
-            <img src="svg/header-top-search.svg" alt="search" />
+            <img src="/svg/header-top-search.svg" alt="search" />
           </span>
         </div>
       </div>
@@ -41,9 +46,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useCartStore } from "@/store/cart.js";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
+const searchQuery = ref("");
+const emit = defineEmits(["search"]);
 const cartStore = useCartStore();
 const menu = [
   {
@@ -59,6 +68,12 @@ const menu = [
     path: "/about",
   },
 ];
+
+watch(searchQuery, (state) => {
+  emit("create", searchQuery.value);
+  console.log(searchQuery.value);
+  router.push("/catalog");
+});
 </script>
 
 <style lang="scss" scoped>

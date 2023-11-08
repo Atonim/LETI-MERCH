@@ -5,6 +5,7 @@ import Cart from '@/views/Cart.vue';
 import User from '@/views/User.vue';
 import Catalog from '@/views/Catalog.vue';
 import About from '@/views/About.vue';
+import NotFound from '@/views/NotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -38,6 +39,11 @@ const router = createRouter({
     name: 'About',
     component: About
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: '404',
+    component: NotFound
+  }
 
   ]
 });
