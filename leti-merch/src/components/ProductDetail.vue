@@ -9,16 +9,24 @@
     </div>
     <div class="product-description">
       <h2 class="product-name">{{ product.name }}</h2>
-      <span class="product-price">{{ price }} ₽</span>
+      <span class="product-price">{{ activePrice }} ₽</span>
       <div class="product-block">
         <div>{{ product.description }}</div>
       </div>
-      <div class="product-block">
-        <div
-          class="product-sizes"
-          v-for="el in product.types"
-          :key="el.id"
-        ></div>
+      <div class="product-size">
+        <span class="product-size__title">Выберите размер</span>
+        <div class="product-size-grid">
+          <div
+            class="product-size-grid__item"
+            v-for="el in product.types"
+            :key="el.id"
+            :class="el.name === activeSize ? 'active' : ''"
+            @click="changeSize(el.id)"
+          >
+            {{ el.name }}
+          </div>
+        </div>
+
         <!--<span class="product-block__title">Характеристики</span>
         <span
           class="product-param"
@@ -59,15 +67,32 @@ const props = defineProps({
   },
 });
 
+console.log(props.product);
+
+const activeSize = ref(props.product.types[0].name);
+const activePrice = ref(props.product.types[0].price);
 const quantity = ref(1);
 const cartStore = useCartStore();
-const minPrice = props.product.types.reduce((x, y) => {
-  Math.min(x.price, y.price);
-  console.log(minPrice, x, y);
-});
+
+const arrayMin = (arr) => {
+  return arr.reduce(function (p, v) {
+    return p.price > v.price ? p.price : v.price;
+  });
+};
+
+const minPrice = (arr) => {
+  let minim = arr[0].price;
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i].price < minim) minim = arr[i].price;
+  }
+  return minim;
+};
+
+console.log(minPrice(props.product.types));
+
 const productForCart = ref({
   name: props.product.name,
-  price: minPrice,
+  price: activePrice,
   avatar: props.product.images[0],
 });
 
@@ -76,8 +101,15 @@ const changeQuantity = (type) => {
     quantity.value === 1 ? (quantity.value = 1) : quantity.value--;
   }
   if (type === "plus") {
-    quantity.value === 3 ? (quantity.value = 3) : quantity.value++;
+    quantity.value === 99 ? (quantity.value = 99) : quantity.value++;
   }
+};
+
+const changeSize = (id) => {
+  const active = props.product.types.find((el) => el.id === id);
+  console.log(active);
+  activeSize.value = active.name;
+  activePrice.value = active.price;
 };
 </script>
 
@@ -89,6 +121,39 @@ const changeQuantity = (type) => {
   grid-template-columns: repeat(2, 1fr);
   column-gap: 65px;
   color: var(--white);
+  &-image {
+    &__img {
+      border-radius: 10px;
+    }
+  }
+  &-size {
+    &__title {
+      font-size: 16px;
+    }
+    &-grid {
+      display: flex;
+      justify-content: flex;
+      align-items: center;
+      margin: 10px 0;
+      gap: 5px;
+      max-width: 610px;
+      &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--white);
+        border-radius: 4px;
+        padding: 5px 15px;
+        width: 80px;
+        height: 50px;
+        &:hover {
+          border: 1px solid var(--black);
+          background: var(--white);
+          color: var(--black);
+        }
+      }
+    }
+  }
   &-name {
     margin: 0 0 16px 0;
     font-family: var(--white);
@@ -100,10 +165,9 @@ const changeQuantity = (type) => {
     margin-bottom: 28px;
   }
   &-block {
-    margin-bottom: 40px;
+    margin: 20px 0;
     &__title {
-      display: block;
-      margin-bottom: 14px;
+      font-size: 16px;
     }
   }
   &-description {
@@ -113,17 +177,24 @@ const changeQuantity = (type) => {
     display: block;
   }
   &-quantity {
+    height: 50px;
     width: 122px;
-    height: 46px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 10px 0;
     padding: 0 16px;
     border: 1px solid var(--white);
+    border-radius: 4px;
     &-symbol {
       color: var(--border-grey);
       cursor: pointer;
     }
+  }
+  .active {
+    border: 1px solid var(--black);
+    background: var(--white);
+    color: var(--black);
   }
 }
 </style>

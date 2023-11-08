@@ -1,8 +1,8 @@
 <template >
-  <div class="about"></div>
+  <About />
 </template>
-<script>
-export default {};
+<script setup>
+import About from "@/components/About.vue";
 </script>
 <style lang="scss" scoped>
 .about {
