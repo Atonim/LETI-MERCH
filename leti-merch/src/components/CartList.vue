@@ -34,7 +34,6 @@ const cartStore = useCartStore();
 
 <style lang="scss" scoped>
 .list {
-  padding: 91px 152px 0 152px;
   color: var(--white);
   &-empty {
     text-align: center;

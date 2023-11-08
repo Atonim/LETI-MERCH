@@ -12,7 +12,7 @@ import { onMounted, ref } from "vue";
 import Hero from "@/components/Hero.vue";
 import Products from "@/components/PopularProducts.vue";
 import Loader from "@/components/UI/Loader.vue";
-import About from "@/components/About.vue";
+import About from "@/components/AboutMain.vue";
 import api from "@/api.js";
 
 const popularProducts = ref([]);
@@ -26,8 +26,9 @@ onMounted(async () => {
 
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .main {
   flex: 1 0 auto;
+  //padding: 91px 152px 0 152px;
 }
 </style>
