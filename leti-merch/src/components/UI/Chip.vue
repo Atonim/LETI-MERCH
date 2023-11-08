@@ -38,4 +38,12 @@ const props = defineProps({
     }
   }
 }
+.active {
+  .chip + label {
+    cursor: pointer;
+    background-color: var(--white);
+    border: 1px solid var(--black);
+    color: var(--black);
+  }
+}
 </style>

@@ -6,6 +6,7 @@
         v-for="(element, i) of menu"
         :key="i"
         :category="element.name"
+        :class="element.id === activeChip ? 'active' : ''"
         @click="toggleChip(element)"
         >{{ element.name }}</Chip
       >
@@ -21,7 +22,7 @@ import api from "@/api.js";
 const emit = defineEmits(["create"]);
 const loading = ref(true);
 const menu = ref([]);
-const activeChip = ref();
+const activeChip = ref(1);
 
 onMounted(async () => {
   menu.value = await api.getCategories();
