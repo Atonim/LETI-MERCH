@@ -15,7 +15,9 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from "vue";
+import { storeToRefs } from "pinia";
+import { computed, onMounted, ref, watch } from "vue";
+import { useSearchStore } from "@/store/searchStore.js";
 import api from "@/api.js";
 import Product from "@/components/Product.vue";
 import Loader from "@/components/UI/Loader.vue";
@@ -27,13 +29,46 @@ const props = defineProps({
   },
 });
 
+const searchStore = useSearchStore();
+const { searchQuery } = storeToRefs(searchStore);
 const products = ref([]);
+const selectedProducts = ref([]);
 const loading = ref(true);
 
 onMounted(async () => {
-  products.value = await api.getProductsByCategory(props.category);
+  selectedProducts.value = await api.getProductsByCategory(props.category);
+  products.value = selectedProducts.value;
+  if (searchQuery.value) {
+    products.value = products.value.filter((el) =>
+      el.name.includes(searchQuery.value)
+    );
+  }
+
   loading.value = false;
 });
+
+watch(
+  searchQuery,
+  (state) => {
+    if (!searchQuery.value) {
+      products.value = selectedProducts.value;
+    }
+    console.log(JSON.stringify(state));
+    products.value = products.value.filter((el) =>
+      el.name.includes(searchQuery.value)
+    );
+  },
+  { deep: true }
+);
+//async search () => {
+//  products.value = await api.apiProduct()
+//}
+
+//watch(searchStore.searchQuery, (state) => {
+//  console.log(searchStore.searchQuery);
+//  searchQuery.value = searchStore.searchQuery;
+//  console.log(searchQuery.value);
+//});
 </script>
 
 <style lang="scss" scoped>

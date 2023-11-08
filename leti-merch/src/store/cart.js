@@ -12,26 +12,6 @@ export const useCartStore = defineStore("cartStore", () => {
 
   const favouriteProducts = computed(() => cart.value.filter(el => el.isFavourite === true));
 
-
-
-  //  const updateSettings = (partialSettings) => {
-  //    const settings = {
-  //      ...this.settings,
-  //      ...partialSettings,
-  //    }
-
-  //    localStorage.setItem('cart', JSON.stringify(settings));
-  //  },
-  //},
-
-  //  const getSettings = () => {
-  //  const settings = localStorage.getItem('cart')
-
-  //  return settings ? JSON.parse(settings) : getDefaultSettings()
-  //},
-
-
-
   const addToCart = (product, quantity) => {
     console.log(product)
     const cartProduct = cart.value.find(el => el.id === product.id && el.type === product.type)

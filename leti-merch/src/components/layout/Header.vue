@@ -21,7 +21,7 @@
             placeholder="Найти"
             v-model="searchQuery"
           />
-          <span class="header-search__aicon">
+          <span class="header-search__aicon" @click="search">
             <img src="/svg/header-top-search.svg" alt="search" />
           </span>
         </div>
@@ -49,11 +49,16 @@
 import { ref, watch } from "vue";
 import { useCartStore } from "@/store/cart.js";
 import { useRouter } from "vue-router";
+import { useSearchStore } from "@/store/searchStore.js";
 
-const router = useRouter();
 const searchQuery = ref("");
 const emit = defineEmits(["search"]);
+
+const router = useRouter();
+
+const searchStore = useSearchStore();
 const cartStore = useCartStore();
+
 const menu = [
   {
     name: "Каталог",
@@ -68,11 +73,16 @@ const menu = [
     path: "/about",
   },
 ];
-
-watch(searchQuery, (state) => {
-  emit("create", searchQuery.value);
+const search = () => {
+  searchStore.searchUpdate(searchQuery.value);
   console.log(searchQuery.value);
   router.push("/catalog");
+};
+watch(searchQuery, (state) => {
+  searchStore.searchUpdate(searchQuery.value);
+  console.log(searchQuery.value);
+  router.push("/catalog");
+  //emit("create", searchQuery.value);
 });
 </script>
 
