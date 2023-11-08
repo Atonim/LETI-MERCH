@@ -10,7 +10,7 @@ import HeroInformation from "@/components/HeroInformation.vue";
 
 <style lang="scss" scoped>
 .hero {
-  background: url("/img/hero.png");
+  background: center no-repeat url("/img/hero.png");
   height: 900px;
   display: flex;
   align-items: center;

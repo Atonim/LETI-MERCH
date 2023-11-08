@@ -14,7 +14,12 @@
         >
       </div>
       <div class="header-search">
-        <input type="text" class="header-search__input" />
+        <div class="header-search-container">
+          <input type="text" class="header-search__input" placeholder="Найти" />
+          <span class="header-search__aicon">
+            <img src="svg/header-top-search.svg" alt="search" />
+          </span>
+        </div>
       </div>
       <div class="header-top-right">
         <div class="header-top-right__cart">
@@ -58,16 +63,16 @@ const menu = [
 
 <style lang="scss" scoped>
 .header {
-  height: 91px; //задаем фикс высоту
+  width: 100%;
+  max-width: 100vw;
+  position: fixed;
   background-color: rgba(42, 42, 42, 0.1);
   backdrop-filter: blur(5px);
-  position: absolute;
   z-index: 10;
   padding: 20px 0;
   font-size: 16px;
   gap: 10px;
   color: var(--white);
-  //width: 1600px;
   &-top {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -121,16 +126,69 @@ const menu = [
     }
   }
   &-search {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    &__link {
-      margin: 0 22px;
+    display: flex;
+    &-container {
+      width: 50%;
+      position: relative;
+    }
+    &__input {
+      display: block;
+      width: 100%;
+      height: calc(2.25rem + 2px);
+      padding: 0.375rem 0.75rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
       color: var(--white);
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
+      background-color: transparent;
+      border: 0 solid var(--white);
+      border-bottom: 1px solid var(--white);
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    &__input::-webkit-search-decoration,
+    &__input::-webkit-search-cancel-button,
+    &__input::-webkit-search-results-button,
+    &__input::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+    }
+
+    &__input::placeholder {
+      color: var(--white);
+      opacity: 0.7;
+    }
+
+    &__input:focus,
+    &__input:hover {
+      color: var(--white);
+      background-color: rgba(158, 158, 158, 0.25);
+      outline: 0;
+    }
+
+    &__input {
+      padding-right: 2.5rem;
+    }
+
+    &__aicon {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      top: 0;
+      bottom: 0;
+      right: 0.875rem;
+      width: 1rem;
+      cursor: pointer;
+      color: var(--white);
+      transition: color 0.15s ease-in-out;
+    }
+
+    &__aicon:hover {
+      color: var(--black);
     }
   }
 }
