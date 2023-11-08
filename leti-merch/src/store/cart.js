@@ -8,7 +8,6 @@ export const useCartStore = defineStore("cartStore", () => {
   const cartInLocalStorage = localStorage.getItem('cart');
   if (cartInLocalStorage) {
     cart.value = JSON.parse(cartInLocalStorage);
-    console.log(JSON.parse(cartInLocalStorage))
   }
 
   const favouriteProducts = computed(() => cart.value.filter(el => el.isFavourite === true));

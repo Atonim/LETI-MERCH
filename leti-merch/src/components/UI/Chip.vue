@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input type="radio" class="chip" />
-    <label for="radio">{{ category }}</label>
+    <input type="radio" class="chip" :id="category" />
+    <label :for="category">{{ category }}</label>
   </div>
 </template>
 

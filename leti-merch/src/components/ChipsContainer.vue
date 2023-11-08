@@ -6,18 +6,19 @@
         v-for="(element, i) of menu"
         :key="i"
         :category="element.name"
-        v-model="activeChip"
+        @click="toggleChip(element)"
         >{{ element.name }}</Chip
       >
     </div>
   </div>
 </template>
 <script setup>
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, defineEmits } from "vue";
 import Loader from "@/components/UI/Loader.vue";
 import Chip from "@/components/UI/Chip.vue";
 import api from "@/api.js";
 
+const emit = defineEmits(["create"]);
 const loading = ref(true);
 const menu = ref([]);
 const activeChip = ref();
@@ -27,13 +28,10 @@ onMounted(async () => {
   loading.value = false;
 });
 
-watch(
-  activeChip,
-  (state) => {
-    console.log(JSON.stringify(state));
-  },
-  { deep: true }
-);
+const toggleChip = (element) => {
+  activeChip.value = element.id;
+  emit("create", activeChip.value);
+};
 </script>
 <style lang="scss" scoped>
 .chips {

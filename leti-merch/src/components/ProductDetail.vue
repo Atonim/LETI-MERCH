@@ -61,9 +61,10 @@ const props = defineProps({
 
 const quantity = ref(1);
 const cartStore = useCartStore();
-const minPrice = props.product.types.reduce((x, y) =>
-  Math.min(x.price, y.price)
-);
+const minPrice = props.product.types.reduce((x, y) => {
+  Math.min(x.price, y.price);
+  console.log(minPrice, x, y);
+});
 const productForCart = ref({
   name: props.product.name,
   price: minPrice,

@@ -1,16 +1,18 @@
 <template>
   <div class="catalog">
     <h2 class="catalog-title">Каталог товаров</h2>
-    <ChipsContainer />
-    <CatalogList />
+    <ChipsContainer @create="changeCatalog" />
+    <CatalogList :category="categoryId" :key="categoryId" />
   </div>
 </template>
 
 <script setup>
+import { ref } from "vue";
 import ChipsContainer from "@/components/ChipsContainer.vue";
 import CatalogList from "@/components/CatalogList.vue";
 
-//const activeCategory = ref(3);
+const categoryId = ref(1);
+const changeCatalog = (id) => (categoryId.value = id);
 </script>
 
 <style lang="scss" scoped>

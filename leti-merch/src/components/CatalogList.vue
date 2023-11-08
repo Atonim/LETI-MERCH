@@ -1,28 +1,29 @@
 <template>
   <div class="products-container">
-    <div class="products">
-      <Loader v-if="loading" />
-      <Product
-        v-else
-        v-for="product in products"
-        :product="product"
-        :key="product.id"
-      />
+    <Loader v-if="loading" />
+    <div v-else>
+      <div v-if="products[0]" class="products">
+        <Product
+          v-for="product in products"
+          :product="product"
+          :key="product.id"
+        />
+      </div>
+      <h3 v-else class="products-empty">Ждите пополнения ассортимента!</h3>
     </div>
-    <!--<div v-else class="products-empty">Ждите пополнение товаров</div>-->
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import api from "@/api.js";
 import Product from "@/components/Product.vue";
 import Loader from "@/components/UI/Loader.vue";
 
 const props = defineProps({
   category: {
-    type: String,
-    default: "1",
+    type: Number,
+    required: true,
   },
 });
 
@@ -31,7 +32,6 @@ const loading = ref(true);
 
 onMounted(async () => {
   products.value = await api.getProductsByCategory(props.category);
-  console.log(products);
   loading.value = false;
 });
 </script>
@@ -41,17 +41,18 @@ onMounted(async () => {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
-  margin-bottom: 64px;
+
   @media screen and (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px 20px;
   }
+  &-container {
+    min-height: 100px;
+    margin-bottom: 64px;
+  }
   &-empty {
     margin: 25px 0;
     color: var(--white);
-  }
-  &-container {
-    margin-bottom: 56px;
   }
   &-title {
     color: var(--white);
