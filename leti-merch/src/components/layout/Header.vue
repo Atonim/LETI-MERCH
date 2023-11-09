@@ -100,7 +100,7 @@ watch(searchQuery, (state) => {
   color: var(--white);
   &-top {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: min-content 1.5fr 150px 1fr;
     align-items: center;
     margin: 0 152px;
     color: var(--white);
@@ -141,8 +141,9 @@ watch(searchQuery, (state) => {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 25px;
     &__link {
-      margin: 0 22px;
+      //margin: 0 22px;
       color: var(--white);
       text-decoration: none;
       &:hover {
@@ -154,7 +155,6 @@ watch(searchQuery, (state) => {
     justify-content: center;
     display: flex;
     &-container {
-      width: 50%;
       position: relative;
     }
     &__input {

@@ -8,20 +8,38 @@
     </div>
 
     <div class="list-container" v-if="cartStore.cart.length">
-      <div class="list-item" v-for="el in cartStore.cart" :key="el.id">
-        <router-link class="list-item-container" :to="`product/${el.id}`">
-          <img :src="el.avatar" :alt="el.name" class="list-item__img" />
-        </router-link>
-        <div class="list-item-name">{{ el.name }}</div>
-        <div class="list-item-size">Размер: {{ el.type.toUpperCase() }}</div>
-        <div class="list-item-quantity">
-          {{ el.quantity }} X {{ el.price }} ₽
+      <TransitionGroup name="list-complete" tag="p">
+        <div
+          class="list-item list-complete-item"
+          v-for="el in cartStore.cart"
+          :key="el.id"
+        >
+          <div class="list-item-card">
+            <router-link class="list-item-container" :to="`product/${el.id}`">
+              <img :src="el.avatar" :alt="el.name" class="list-item__img" />
+            </router-link>
+            <div class="list-item-name">{{ el.name }}</div>
+            <div class="list-item-size">
+              Размер: {{ el.type.toUpperCase() }}
+            </div>
+            <div class="list-item-quantity">
+              {{ el.quantity }} X {{ el.price }} ₽
+            </div>
+            <div class="list-item-total">
+              {{ totalPrice(el.price, el.quantity) }} ₽
+            </div>
+          </div>
+          <div class="list-item-delete" @click="cartStore.removeFromCart(el)">
+            <img
+              src="/svg/trash.svg"
+              alt="trash"
+              class="list-item-delete__svg"
+            />
+          </div>
+
+          <!--<uiButton @click="cartStore.removeFromCart(el)">Удалить</uiButton>-->
         </div>
-        <div class="list-item-total">
-          {{ totalPrice(el.price, el.quantity) }} ₽
-        </div>
-        <uiButton @click="cartStore.removeFromCart(el)">Удалить</uiButton>
-      </div>
+      </TransitionGroup>
       <div class="list-purchase">
         <uiButton @click="cartStore.purchase()">Подвердить</uiButton>
       </div>
@@ -46,8 +64,6 @@ const cartStore = useCartStore();
     margin: 50px;
   }
   &-purchase {
-    display: flex;
-    justify-content: flex-end;
     margin: 50px 0;
   }
   &-title {
@@ -70,16 +86,55 @@ const cartStore = useCartStore();
     }
   }
   &-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    border: 1px solid var(--white);
     margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: auto 100px;
+    &-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      border: 1px solid var(--white);
+    }
     &__img {
       max-width: 200px;
     }
+    &:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+    &-delete {
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+      border: 1px solid var(--white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &__svg {
+        width: 50px;
+        &:hover {
+          fill: var(--black);
+        }
+      }
+      &:hover {
+        background: var(--white);
+      }
+    }
+  }
+  .list-complete-item {
+    transition: all 0.8s ease;
+  }
+
+  .list-complete-enter-from,
+  .list-complete-leave-to {
+    opacity: 0;
+    transform: rotate(20deg);
+  }
+
+  .list-complete-leave-active {
+    position: absolute;
   }
 }
 </style>

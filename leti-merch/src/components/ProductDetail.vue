@@ -127,20 +127,6 @@ console.log(activeType.value.id);
 const quantity = ref(1);
 const cartStore = useCartStore();
 
-//const arrayMin = (arr) => {
-//  return arr.reduce(function (p, v) {
-//    return p.price > v.price ? p.price : v.price;
-//  });
-//};
-
-//const minPrice = (arr) => {
-//  let minim = arr[0].price;
-//  for (let i = 1; i < arr.length; i++) {
-//    if (arr[i].price < minim) minim = arr[i].price;
-//  }
-//  return minim;
-//};
-
 const productForCart = ref({
   name: props.product.name,
   price: activeType.value.price,
@@ -178,15 +164,13 @@ const changeType = (id) => {
   &-bottom {
     margin-top: 50px;
     &-buttons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       &__item {
         display: flex;
         justify-content: center;
         align-items: center;
         border: 1px solid var(--white);
-        width: 432px;
         text-align: center;
         color: var(--white);
         font-size: 32px;

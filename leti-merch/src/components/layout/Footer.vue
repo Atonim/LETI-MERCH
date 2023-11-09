@@ -67,8 +67,7 @@ import SubscribeForm from "@/components/SubscribeForm.vue";
   }
   &-top {
     display: grid;
-    grid-template-columns: 540px 1fr;
-    column-gap: 110px;
+    grid-template-columns: 2fr 1fr;
     border-bottom: 1px solid var(--white);
     @media screen and (max-width: 1150px) {
       column-gap: 10px;
@@ -101,6 +100,10 @@ import SubscribeForm from "@/components/SubscribeForm.vue";
     &-copyright {
       font-size: 14px;
     }
+  }
+  &-subscribe {
+    display: flex;
+    align-items: center;
   }
 }
 </style>

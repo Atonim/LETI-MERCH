@@ -3,8 +3,8 @@
     <div class="hero-info-text">
       <h1 class="hero-info__title">{{ title }}</h1>
     </div>
-    <router-link to="/about" class="hero-info-link">
-      <uiButton>Подробнее</uiButton>
+    <router-link to="/catalog" class="hero-info-link">
+      <uiButton>Перейти в каталог</uiButton>
     </router-link>
 
     <!--<a :href="link" class="hero-info-link">Узнать подробнее</a>-->
@@ -41,6 +41,7 @@ const props = defineProps({
     margin: 0 152px;
     gap: 60px;
     &-link {
+      width: 100%;
       color: var(--white);
       text-decoration: none;
       &:hover {

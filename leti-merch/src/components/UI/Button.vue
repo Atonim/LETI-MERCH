@@ -20,15 +20,15 @@
 const props = defineProps({
   backgroundColor: {
     type: String,
-    default: "var(--white)",
+    default: "transparent",
   },
   textColor: {
     type: String,
-    default: "var(--black)",
+    default: "var(--white)",
   },
   border: {
     type: String,
-    default: "none",
+    default: "1px solid var(--white)",
   },
   borderRadius: {
     type: String,
@@ -51,12 +51,15 @@ const props = defineProps({
   display: inline-flex; //если кнопка еще и ссылка
   align-items: center;
   justify-content: center;
+  width: 100%;
   cursor: pointer;
   &:hover {
-    opacity: 0.8;
     background-color: var(--white) !important;
     color: var(--black) !important;
     border-color: (--black) !important;
+  }
+  &:active {
+    opacity: 0.5;
   }
 }
 </style>
